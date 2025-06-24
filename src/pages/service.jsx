@@ -10,16 +10,17 @@ import {
   FaPenFancy,
   FaCloud,
 } from "react-icons/fa";
+import EnquireForm from "./EnquireForm";
 
 const services = [
-  { icon: <FaLaptopCode />, title: "Web Dev", link: "/web-development" },
-  { icon: <FaMobileAlt />, title: "Mobile", link: "/mobile-apps" },
-  { icon: <FaSearch />, title: "SEO", link: "/seo-services" },
-  { icon: <FaPaintBrush />, title: "Design", link: "/design" },
-  { icon: <FaBullhorn />, title: "Marketing", link: "/marketing" },
-  { icon: <FaPencilRuler />, title: "Branding", link: "/branding" },
-  { icon: <FaPenFancy />, title: "Writing", link: "/content-writing" },
-  { icon: <FaCloud />, title: "Cloud", link: "/cloud-solutions" },
+  { icon: <FaLaptopCode />, title: "Web Dev", link: "/enquire" },
+  { icon: <FaMobileAlt />, title: "Mobile", link: "/enquire" },
+  { icon: <FaSearch />, title: "SEO", link: "/enquire" },
+  { icon: <FaPaintBrush />, title: "Design", link: "/enquire" },
+  { icon: <FaBullhorn />, title: "Marketing", link: "/enquire" },
+  { icon: <FaPencilRuler />, title: "Branding", link: "/enquire" },
+  { icon: <FaPenFancy />, title: "Writing", link: "/enquire" },
+  { icon: <FaCloud />, title: "Cloud", link: "/enquire" },
 ];
 
 export default function Services() {
@@ -39,7 +40,7 @@ export default function Services() {
         </div>
 
         {/* Rotating icons */}
-        <div className="absolute inset-0 animate-spin-slow group-hover:animate-none">
+        <div className="absolute inset-0 animate-spin-slow group-hover:animate-none transition-all duration-500">
           {services.map((service, index) => {
             const angle = (360 / count) * index;
             const x = radius * Math.cos((angle * Math.PI) / 180);
@@ -57,6 +58,7 @@ export default function Services() {
               >
                 <Link
                   to={service.link}
+                  state={{ serviceName: service.title }}
                   className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition duration-300 shadow-lg"
                 >
                   {service.icon}
