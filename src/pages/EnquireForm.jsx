@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import image from "../assets/login1.webp"; // Adjust the path if needed
 import VerifiedPage from "./VerifiedPage"; // Import your VerifiedPage component
 
 const EnquireForm = () => {
+   const location = useLocation();
   const navigate = useNavigate();
   const serviceName = location.state?.serviceName || "Service";
 
