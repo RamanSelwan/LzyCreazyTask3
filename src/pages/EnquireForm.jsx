@@ -1,22 +1,29 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import image from "../assets/login1.webp"; // Adjust the path as necessary
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import image from "../assets/login1.webp"; // Adjust the path if needed
+import VerifiedPage from "./VerifiedPage"; // Import your VerifiedPage component
+
 const EnquireForm = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const serviceName = location.state?.serviceName || "Service";
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.location.href = "https://pawangangwar9.github.io/verify-page/";
+    setIsSubmitted(true);
   };
 
+  if (isSubmitted) {
+    return <VerifiedPage />;
+  }
+
   return (
-    <div className="h-screen bg-gradient-to-br from-[#85abb3] to-[#a94c4c] flex items-center justify-center">
+    <div className="h-screen bg-gradient-to-br from-[#55848d] to-[#a94c4c] flex items-center justify-center">
       <div className="flex w-[800px] max-w-[95%] rounded-lg shadow-lg overflow-hidden bg-white">
         {/* Image Section */}
         <div className="relative w-1/2 bg-[url('/image/login1.webp')] bg-cover bg-center hidden sm:block">
-        <img src={image} alt="" />
+          <img src={image} alt="" />
           <div className="absolute bottom-0 bg-black/50 text-white text-sm p-4">
             {`Thanks for choosing ${serviceName}. Please tell us more about your needs.`}
           </div>
